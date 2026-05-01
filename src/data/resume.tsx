@@ -18,6 +18,15 @@ import { Postman } from "@/components/ui/svgs/postman";
 // To update your portfolio, edit the fields below.
 // ====================================================================
 
+export type Hackathon = {
+  title: string;
+  dates: string;
+  location?: string;
+  description?: string;
+  image?: string;
+  links?: readonly { title: string; icon: React.ReactNode; href: string }[];
+};
+
 export const DATA = {
   // ── Personal Info ──────────────────────────────────────────────────
   name: "Hemant Sonkar",
@@ -197,5 +206,5 @@ export const DATA = {
 
   // ── Hackathons (kept for template compatibility, empty for now) ────
   // Add hackathon entries here if you participate in any.
-  hackathons: [],
+  hackathons: [] as Hackathon[],
 } as const;

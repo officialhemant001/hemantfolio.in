@@ -19,7 +19,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="w-full h-48 object-cover"
+      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
       onError={() => setImageError(true)}
     />
   );
@@ -57,7 +57,7 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "group flex flex-col h-full bg-card border border-border/50 rounded-xl overflow-hidden hover:shadow-lg hover:border-border/100 hover:-translate-y-1 transition-all duration-300 cursor-pointer",
         className
       )}
     >
@@ -66,7 +66,7 @@ export function ProjectCard({
           href={href || "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="block"
+          className="block overflow-hidden"
         >
           {video ? (
             <video

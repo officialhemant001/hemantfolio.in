@@ -38,16 +38,16 @@ export default function Page() {
                     href="/typs.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-border bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors"
+                    className="group inline-flex items-center gap-2 rounded-xl border border-border/50 bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-sm hover:shadow-md hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300"
                   >
-                    <Download className="size-4" />
+                    <Download className="size-4 group-hover:-translate-y-0.5 transition-transform duration-300" />
                     Download Resume
                   </Link>
                 </div>
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
+              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted hover:ring-primary/20 hover:scale-105 transition-all duration-300">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
@@ -100,7 +100,7 @@ export default function Page() {
                   href={education.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-x-3 justify-between group"
+                  className="flex items-center gap-x-3 justify-between group hover:bg-muted/50 p-2 -mx-2 rounded-lg transition-colors duration-200"
                 >
                   <div className="flex items-center gap-x-3 flex-1 min-w-0">
                     {education.logoUrl ? (
@@ -145,7 +145,7 @@ export default function Page() {
           <div className="flex flex-wrap gap-2">
             {DATA.skills.map((skill, id) => (
               <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
+                <div className="border bg-background border-border/50 hover:border-border hover:bg-muted/50 transition-colors duration-300 rounded-lg h-9 w-fit px-4 flex items-center gap-2 shadow-sm">
                   {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
                   <span className="text-foreground text-sm font-medium">{skill.name}</span>
                 </div>
