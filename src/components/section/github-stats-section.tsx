@@ -4,8 +4,15 @@ import { GitHubCalendar } from 'react-github-calendar';
 import { DATA } from "@/data/resume";
 import BlurFade from "@/components/magicui/blur-fade";
 import { Icons } from "@/components/icons";
+import { useState, useEffect } from "react";
 
 export default function GithubStatsSection() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const username = "officialhemant001"; // Pulled from DATA.contact.social.GitHub.url could also work, but hardcoding for react-github-calendar is safer
 
   return (
@@ -48,17 +55,21 @@ export default function GithubStatsSection() {
           <h3 className="text-lg font-bold mb-6 w-full text-left">GitHub Contributions</h3>
           <div className="w-full flex justify-center pb-2 overflow-hidden">
             <div className="min-w-max scale-90 sm:scale-100 origin-center">
-              <GitHubCalendar 
-                username={username} 
-                colorScheme="dark"
-                fontSize={14}
-                blockSize={12}
-                blockMargin={5}
-                theme={{
-                  light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-                  dark: ["#161B22", "#0e4429", "#006d32", "#26a641", "#39d353"],
-                }}
-              />
+              {mounted ? (
+                <GitHubCalendar 
+                  username={username} 
+                  colorScheme="dark"
+                  fontSize={14}
+                  blockSize={12}
+                  blockMargin={5}
+                  theme={{
+                    light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+                    dark: ["#161B22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+                  }}
+                />
+              ) : (
+                <div className="h-[120px] w-full" />
+              )}
             </div>
           </div>
         </div>
