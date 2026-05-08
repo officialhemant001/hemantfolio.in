@@ -37,7 +37,7 @@ export const DATA = {
   description:
     "Full Stack Web Developer & AI Engineer. Building scalable web apps and intelligent systems with Python, Django & React.",
   summary:
-    "I'm a **Computer Science Engineering** student at [Khwaja Moinuddin Chishti Language University, Lucknow](https://kmclu.ac.in/) with hands-on experience building production-grade web applications. I specialize in **Python, Django, and React.js**, with a strong focus on building REST APIs, AI-powered solutions, and database-driven systems. Currently working as a **Full Stack Developer Intern**, I'm passionate about frontend-backend integration, performance optimization, and solving real-world problems through technology.",
+    "I'm a **Computer Science Engineering** student at [Khwaja Moinuddin Chishti Language University, Lucknow](https://kmclu.ac.in/) with hands-on experience building production-grade web applications. I specialize in `Python`, `Django`, and `React.js`, with a strong focus on building REST APIs, AI-powered solutions, and database-driven systems. Currently working as a **Full Stack Developer Intern**, I'm passionate about frontend-backend integration, performance optimization, and solving real-world problems through technology.",
   avatarUrl: "/me.jpeg",
 
   // ── Technical Skills (displayed as icon chips) ─────────────────────
@@ -83,7 +83,7 @@ export const DATA = {
       },
       X: {
         name: "X",
-        url: "https://x.com/officialhemant0",
+        url: "https://x.com/Hemantsonkar001",
         icon: Icons.x,
         navbar: true,
       },
@@ -110,6 +110,7 @@ export const DATA = {
       end: "Present",
       description:
         "Developed backend modules using Django framework. Built responsive frontend interfaces using HTML, CSS, and JavaScript. Worked on real-world projects, improving debugging and optimization skills. Collaborated on seamless frontend-backend integration.",
+      technologies: ["Django", "Python", "JavaScript", "HTML", "CSS"],
     },
   ],
 
@@ -120,14 +121,44 @@ export const DATA = {
       href: "https://kmclu.ac.in/",
       degree: "Bachelor of Technology in Computer Science & Engineering",
       logoUrl: "",
-      start: "2023",
+      start: "2022",
       end: "Present",
     },
   ],
 
-  // ── Projects ───────────────────────────────────────────────────────
   // Add your projects here with technologies and links.
   projects: [
+    {
+      title: "AI Autonomous Research OS (AI-ROS)",
+      href: "https://github.com/officialhemant001/AI-ROS",
+      dates: "2025 — Present",
+      active: true,
+      description:
+        "Production-grade AI-powered SaaS platform featuring multi-agent AI architecture, RAG-based document intelligence, workflow automation, real-time collaboration using WebSockets, and Google Drive integration. Enables AI-generated reports, semantic search, and autonomous task execution with a modern scalable architecture.",
+      technologies: [
+        "React.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "ShadCN",
+        "Django REST",
+        "PostgreSQL",
+        "Redis",
+        "Celery",
+        "LangChain",
+        "CrewAI",
+        "OpenAI API",
+        "ChromaDB",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/officialhemant001/AI-ROS",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop",
+      video: "",
+    },
     {
       title: "AgroIntel AI",
       href: "https://github.com/officialhemant001/AgroIntel-AI",
@@ -150,7 +181,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?q=80&w=1000&auto=format&fit=crop",
       video: "",
     },
     {
@@ -174,7 +205,53 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+      video: "",
+    },
+    {
+      title: "AI Repairing Version",
+      href: "#",
+      dates: "2025",
+      active: true,
+      description:
+        "An intelligent AI-powered application that helps users repair electronic devices. Users can upload an image of a damaged or non-working device, and the system analyzes the issue using AI. It then provides a **step-by-step repair guide** to fix the problem efficiently. This project is designed to simplify troubleshooting and reduce dependency on technicians.",
+      technologies: [
+        "React.js",
+        "Django",
+        "Django REST Framework",
+        "AI Processing",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "#",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/ai_repair.png",
+      video: "",
+    },
+    {
+      title: "AI-Powered E-Commerce",
+      href: "#",
+      dates: "2025",
+      active: true,
+      description:
+        "A smart e-commerce platform integrated with AI features. Users can browse products and also interact with an **AI chatbot** to ask questions, get product recommendations, and receive personalized suggestions. The AI enhances the shopping experience by making it more interactive and user-friendly.",
+      technologies: [
+        "React.js",
+        "Django",
+        "Django REST Framework",
+        "AI Chat System",
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "#",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/ai_ecommerce.png",
       video: "",
     },
   ],

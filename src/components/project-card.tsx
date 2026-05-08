@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -57,10 +58,13 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "group flex flex-col h-full bg-card border border-border/50 rounded-xl overflow-hidden hover:shadow-lg hover:border-border/100 hover:-translate-y-1 transition-all duration-300 cursor-pointer",
+        "group flex flex-col h-full bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_30px_rgba(var(--primary),0.15)] hover:border-primary/30 hover:-translate-y-2 transition-all duration-500 cursor-pointer relative",
         className
       )}
     >
+      <BorderBeam size={250} duration={12} delay={9} />
+      <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
       <div className="relative shrink-0">
         <Link
           href={href || "#"}
