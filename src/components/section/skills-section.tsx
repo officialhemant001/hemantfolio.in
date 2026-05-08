@@ -5,10 +5,6 @@ import { cn } from "@/lib/utils";
 export default function SkillsSection() {
   return (
     <section id="skills-detailed" className="py-10 relative overflow-hidden">
-      {/* Soft gradient background behind the whole section */}
-      <div className="absolute inset-0 bg-linear-to-b from-background via-primary/5 to-background pointer-events-none -z-10" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/10 blur-[120px] pointer-events-none -z-10 rounded-full" />
-
       <div className="flex min-h-0 flex-col gap-y-8 relative z-10">
         <div className="flex flex-col gap-y-4 items-center justify-center">
           <div className="flex items-center w-full">
@@ -35,12 +31,10 @@ export default function SkillsSection() {
           {DATA.skillCategories.map((cat) => (
             <div
               key={cat.category}
-              className="group relative border border-border/40 rounded-2xl p-6 flex flex-col gap-4 bg-card/40 backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-105 hover:border-purple-500/50 hover:shadow-[0_10px_40px_rgba(168,85,247,0.25)] overflow-hidden cursor-default"
+              className="group relative border border-border/50 rounded-2xl p-6 flex flex-col gap-4 bg-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md overflow-hidden cursor-default"
             >
-              {/* Subtle inner glow on hover */}
-              <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               
-              <h3 className="font-bold text-lg text-foreground tracking-tight relative z-10 drop-shadow-sm">
+              <h3 className="font-bold text-lg text-foreground tracking-tight relative z-10">
                 {cat.category}
               </h3>
               <div className="flex flex-wrap gap-2 relative z-10">
@@ -48,7 +42,7 @@ export default function SkillsSection() {
                   <Badge
                     key={item}
                     variant="outline"
-                    className="text-xs font-semibold border-border/60 bg-background/50 hover:bg-primary/10 hover:border-primary/40 transition-colors h-7 px-3 rounded-md shadow-sm"
+                    className="text-xs font-semibold border-border/50 bg-muted hover:bg-muted/80 transition-colors h-7 px-3 rounded-md shadow-sm"
                   >
                     {item}
                   </Badge>

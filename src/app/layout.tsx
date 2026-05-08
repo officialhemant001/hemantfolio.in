@@ -1,12 +1,13 @@
-import Navbar from "@/components/navbar";
-import RabbitCursor from "@/components/rabbit-cursor";
+import TopNavbar from "@/components/top-navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "sonner";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -71,11 +72,11 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            <div className="relative z-10 max-w-2xl mx-auto min-h-screen py-12 sm:py-24 px-6">
+            <TopNavbar />
+            <div className="relative z-10 max-w-2xl mx-auto min-h-screen py-6 sm:py-10 px-6">
               {children}
             </div>
-            <Navbar />
-            <RabbitCursor />
+            <Toaster position="bottom-right" theme="system" />
           </TooltipProvider>
         </ThemeProvider>
       </body>
