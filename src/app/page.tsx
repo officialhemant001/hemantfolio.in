@@ -11,6 +11,7 @@ import { Icons } from "@/components/icons";
 import SkillsSection from "@/components/section/skills-section";
 import CertificationsSection from "@/components/section/certifications-section";
 import GithubStatsSection from "@/components/section/github-stats-section";
+import { HeroButtons } from "@/components/hero-buttons";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -96,24 +97,7 @@ export default function Page() {
 
           {/* CTA Buttons */}
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/typs.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium shadow-sm hover:bg-muted transition-all duration-200 hover:shadow-md"
-              >
-                <FileText className="size-4" />
-                Resume / CV
-              </Link>
-              <Link
-                href={`mailto:${DATA.contact.email}`}
-                className="inline-flex items-center gap-2 rounded-lg bg-foreground text-background px-4 py-2.5 text-sm font-medium shadow-sm hover:opacity-90 transition-all duration-200 hover:shadow-md"
-              >
-                <Send className="size-4" />
-                Get in touch
-              </Link>
-            </div>
+            <HeroButtons />
           </BlurFade>
 
           {/* Social Icons */}
