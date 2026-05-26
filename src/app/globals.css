@@ -118,6 +118,12 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    word-break: break-word;
+  }
+
+  html {
+    overflow-x: hidden;
   }
 
   /* Shiki dual theme support */

@@ -73,7 +73,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
             <TopNavbar />
-            <div className="relative z-10 max-w-2xl mx-auto min-h-screen py-6 sm:py-10 px-6">
+            <div className="relative z-10 max-w-2xl mx-auto min-h-screen py-6 sm:py-10 px-4 sm:px-6">
               {children}
             </div>
             <Toaster position="bottom-right" theme="system" />

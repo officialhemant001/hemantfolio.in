@@ -8,7 +8,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 export default function TopNavbar() {
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/80 border-b border-border/40">
-      <div className="max-w-2xl mx-auto flex items-center justify-between px-6 py-3">
+      <div className="max-w-2xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
         {/* Left: Avatar */}
         <Link href="/" className="flex items-center gap-2 group">
           <Avatar className="size-8 border border-border/50 shadow-sm group-hover:shadow-md transition-shadow">
@@ -18,7 +18,7 @@ export default function TopNavbar() {
         </Link>
 
         {/* Center: Nav Links */}
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-4 sm:gap-6">
           <Link
             href="#work"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
