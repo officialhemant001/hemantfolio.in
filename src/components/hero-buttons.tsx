@@ -23,7 +23,7 @@ export function HeroButtons() {
   return (
     <div className="flex flex-wrap items-center gap-3 relative" ref={dropdownRef}>
       <Link
-        href="/typs.pdf"
+        href="/Lucknow%20Resu.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium shadow-sm hover:bg-muted transition-all duration-200 hover:shadow-md"
