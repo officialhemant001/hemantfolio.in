@@ -2,10 +2,10 @@ import TopNavbar from "@/components/top-navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "sonner";
-import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { siteMetadata, jsonLd } from "./Meta";
 import "./globals.css";
 
 const geist = Geist({
@@ -20,41 +20,10 @@ const geistMono = Geist_Mono({
   variable: "--font-mono",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(DATA.url),
-  title: {
-    default: `${DATA.name} — Full Stack Developer & AI Engineer`,
-    template: `%s | ${DATA.name}`,
-  },
-  description: DATA.description,
-  openGraph: {
-    title: `${DATA.name} — Portfolio`,
-    description: DATA.description,
-    url: DATA.url,
-    siteName: `${DATA.name}`,
-    locale: "en_US",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  twitter: {
-    title: `${DATA.name}`,
-    card: "summary_large_image",
-  },
-  verification: {
-    google: "",
-    yandex: "",
-  },
-};
+// ── SEO Metadata ─────────────────────────────────────────────────────────────
+// Centralized in Meta.tsx for maintainability. Includes title, description,
+// keywords, Open Graph, Twitter Card, robots, favicons, and more.
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -63,6 +32,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* ── JSON-LD Structured Data ─────────────────────────────────────── */}
+      {/* Enables rich results in Google: Knowledge Panel, sitelinks, etc. */}
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
