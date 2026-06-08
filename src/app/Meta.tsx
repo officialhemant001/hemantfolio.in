@@ -445,6 +445,7 @@ export const jsonLd = {
         DATA.contact.social.LinkedIn.url,   // https://linkedin.com/in/hemant-sonkar-developer
         DATA.contact.social.X.url,          // https://x.com/Hemantsonkar001
         "https://www.instagram.com/hemant_.112/", // Instagram — personal brand
+        "https://www.facebook.com/share/1DFNQSg8Dj/", // Facebook — personal brand
       ],
 
       // ── Skills / Expertise ──
