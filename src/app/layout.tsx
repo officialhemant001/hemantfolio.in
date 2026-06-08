@@ -39,6 +39,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Verification links to social profiles to establish digital identity and authority */}
+        <link rel="me" href="https://github.com/officialhemant001" />
+        <link rel="me" href="https://www.linkedin.com/in/hemant-sonkar-developer" />
+        <link rel="me" href="https://x.com/Hemantsonkar001" />
+        <link rel="me" href="https://www.instagram.com/hemant_.112/" />
+        <link rel="me" href="https://www.facebook.com/share/1DFNQSg8Dj/" />
       </head>
       <body
         className={cn(

@@ -6,7 +6,7 @@ import { DATA } from "@/data/resume";
 
 export const runtime = "edge";
 
-export const alt = "Blog Post";
+export const alt = `Blog Post — ${DATA.name}`;
 export const size = {
     width: 1200,
     height: 630,

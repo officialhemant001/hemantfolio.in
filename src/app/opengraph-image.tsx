@@ -4,7 +4,7 @@ import { DATA } from "@/data/resume";
 
 export const runtime = "edge";
 
-export const alt = DATA.name;
+export const alt = `${DATA.name} — Full Stack Developer & AI Engineer`;
 export const size = {
     width: 1200,
     height: 630,

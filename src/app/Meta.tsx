@@ -498,7 +498,6 @@ export const jsonLd = {
       worksFor: {
         "@type": "Organization",
         name: "Techpile",
-        url: "#",
       },
 
       // ── Nationality ──

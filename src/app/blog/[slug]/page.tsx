@@ -47,12 +47,25 @@ export async function generateMetadata({
   return {
     title,
     description,
+    authors: [{ name: DATA.name, url: DATA.url }],
+    creator: DATA.name,
+    keywords: [
+      "Full Stack Developer",
+      "Python",
+      "Django",
+      "React",
+      "Next.js",
+      "Software Engineer",
+      "Hemant Sonkar",
+      ...title.split(" ").filter(word => word.length > 3)
+    ],
     openGraph: {
       title,
       description,
       type: "article",
       publishedTime,
       url: `${DATA.url}/blog/${slug}`,
+      authors: [`${DATA.url}/#person`],
       ...(image && {
         images: [
           {
@@ -109,8 +122,28 @@ export default async function Blog({
     url: `${DATA.url}/blog/${slug}`,
     author: {
       "@type": "Person",
+      "@id": `${DATA.url}/#person`,
+      name: DATA.name,
+      url: DATA.url,
+      sameAs: [
+        "https://github.com/officialhemant001",
+        "https://www.linkedin.com/in/hemant-sonkar-developer",
+        "https://x.com/Hemantsonkar001",
+        "https://www.instagram.com/hemant_.112/",
+        "https://www.facebook.com/share/1DFNQSg8Dj/"
+      ]
+    },
+    publisher: {
+      "@type": "Person",
+      "@id": `${DATA.url}/#person`,
       name: DATA.name,
     },
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${DATA.url}/#website`,
+      url: DATA.url,
+      name: `${DATA.name} — Portfolio`,
+    }
   }).replace(/</g, "\\u003c");
 
   return (

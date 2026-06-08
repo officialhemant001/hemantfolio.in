@@ -6,16 +6,28 @@ import { paginate, normalizePage } from "@/lib/pagination";
 import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Thoughts on software development, life, and more.",
+  title: "Blog — Hemant Sonkar",
+  description: "Technical blog by Hemant Sonkar. Thoughts, tutorials, and guides on Python, Django, React, Next.js, and software engineering.",
+  alternates: {
+    canonical: "https://hemantsonkar.dev/blog",
+  },
+  keywords: [
+    "Hemant Sonkar Blog",
+    "Software Engineering Blog",
+    "Python Django React NextJS tutorials",
+    "Full Stack Developer Lucknow",
+    "Web Development Guides",
+  ],
   openGraph: {
-    title: "Blog",
-    description: "Thoughts on software development, life, and more.",
+    title: "Blog — Hemant Sonkar",
+    description: "Technical blog by Hemant Sonkar. Thoughts, tutorials, and guides on Python, Django, React, Next.js, and software engineering.",
+    url: "https://hemantsonkar.dev/blog",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog",
-    description: "Thoughts on software development, life, and more.",
+    title: "Blog — Hemant Sonkar",
+    description: "Technical blog by Hemant Sonkar. Thoughts, tutorials, and guides on Python, Django, React, Next.js, and software engineering.",
   },
 };
 

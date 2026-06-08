@@ -77,7 +77,7 @@ export const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://linkedin.com/in/hemant-sonkar-developer",
+        url: "https://www.linkedin.com/in/hemant-sonkar-developer",
         icon: Icons.linkedin,
         navbar: true,
       },
