@@ -20,12 +20,20 @@
 //   - Geographic targeting with GeoCoordinates for local search
 //   - Enhanced Open Graph with profile namespace for LinkedIn optimization
 //   - Verification meta tags for Google, Bing, and Yandex
+//   - SearchAction for Google Sitelinks Search Box
+//   - FAQPage schema for rich results from introduction Q&A
+//   - Occupation & EducationalCredential for recruiter discovery
+//   - Speakable schema for voice search optimization
+//   - Blog/Article structured data for content indexing
+//   - Complete breadcrumb navigation for all routes
 //
 // References:
 //   https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 //   https://nextjs.org/docs/app/api-reference/file-conventions/metadata
 //   https://schema.org/Person
 //   https://schema.org/ProfilePage
+//   https://schema.org/FAQPage
+//   https://schema.org/SearchAction
 //   https://developers.google.com/search/docs/appearance/structured-data
 // ============================================================================
 
@@ -281,23 +289,40 @@ export const siteMetadata: Metadata = {
 
   // ── Favicon & Icons ──────────────────────────────────────────────────────
   // Provides icons for browser tabs, bookmarks, PWA installs, and Apple devices.
+  // Multiple sizes ensure crisp display across all devices and contexts.
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
     ],
     apple: [
-      { url: "/favicon.ico", sizes: "180x180", type: "image/x-icon" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
+    shortcut: ["/favicon.ico"],
   },
+
+  // ── Manifest (PWA) ──────────────────────────────────────────────────────
+  // Links to the web app manifest for PWA install prompts and app metadata.
+  manifest: "/manifest.webmanifest",
 
   // ── Verification Tags ────────────────────────────────────────────────────
   // Proves site ownership to search engines for their webmaster tools.
+  // Only include tags with real values — placeholders can trigger warnings.
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google-site-verification-placeholder",
-    yandex: process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION || "yandex-verification-placeholder",
-    other: {
-      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "bing-verification-placeholder",
-    },
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    }),
+    ...(process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION && {
+      yandex: process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION,
+    }),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && {
+      other: {
+        "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+      },
+    }),
   },
 
   // ── Additional Meta Tags ─────────────────────────────────────────────────
@@ -340,6 +365,18 @@ export const siteMetadata: Metadata = {
 
     // ── Profile / Identity Discovery ──
     "profile:username": "officialhemant001",
+
+    // ── Content Language (explicit for multilingual crawlers) ──
+    "content-language": "en-US",
+
+    // ── Revisit Interval (Bing, Yandex hint for crawl frequency) ──
+    "revisit-after": "7 days",
+
+    // ── Rating (safe for all audiences) ──
+    "rating": "general",
+
+    // ── Author shorthand (supplementary to authors[] above) ──
+    "author": DATA.name,
   },
 };
 
@@ -357,6 +394,9 @@ export const siteMetadata: Metadata = {
 //   4. BreadcrumbList — Enables navigation trails in search results
 //   5. CollectionPage — Represents the projects collection index page
 //   6. SoftwareApplication / CreativeWork — Dynamic projects markup
+//   7. Blog — Represents the blog section with ItemList of articles
+//   8. FAQPage — Rich results for Q&A content from introduction page
+//   9. Occupation & EducationalCredential — Recruiter discovery
 //
 // The @graph approach links all schemas together with @id references,
 // creating a connected knowledge graph for search engines.
@@ -364,7 +404,8 @@ export const siteMetadata: Metadata = {
 
 /**
  * JSON-LD structured data combining Person, WebSite, ProfilePage,
- * BreadcrumbList, CollectionPage, and individual SoftwareApplication schemas.
+ * BreadcrumbList, CollectionPage, Blog, FAQPage, and individual
+ * SoftwareApplication schemas.
  */
 export const jsonLd = {
   "@context": "https://schema.org",
@@ -398,6 +439,17 @@ export const jsonLd = {
         addressCountry: "IN",
       },
 
+      // ── Home Location (GeoCoordinates for local search) ──
+      homeLocation: {
+        "@type": "Place",
+        name: "Lucknow, Uttar Pradesh, India",
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 26.8467,
+          longitude: 80.9462,
+        },
+      },
+
       // ── Social Profiles (sameAs) ──
       // Dynamic resolution from profile links
       sameAs: [
@@ -413,9 +465,19 @@ export const jsonLd = {
         "Full Stack Development",
         "Software Engineering",
         "AI Engineering",
+        "Machine Learning",
+        "Deep Learning",
+        "Natural Language Processing",
+        "RAG Architecture",
         ...DATA.skills.map((s) => s.name),
         ...DATA.skillCategories.flatMap((c) => c.items),
       ].filter((value, index, self) => self.indexOf(value) === index),
+
+      // ── Programming Languages Known ──
+      knowsLanguage: [
+        { "@type": "Language", name: "English" },
+        { "@type": "Language", name: "Hindi" },
+      ],
 
       // ── Education ──
       alumniOf: {
@@ -427,6 +489,35 @@ export const jsonLd = {
           addressLocality: "Lucknow",
           addressRegion: "Uttar Pradesh",
           addressCountry: "IN",
+        },
+      },
+
+      // ── Educational Credential ──
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "degree",
+        name: "Bachelor of Technology in Computer Science & Engineering",
+        recognizedBy: {
+          "@type": "EducationalOrganization",
+          name: "Khwaja Moinuddin Chishti Language University",
+        },
+      },
+
+      // ── Current Occupation (structured for recruiter tools) ──
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "Full Stack Developer",
+        occupationLocation: {
+          "@type": "City",
+          name: "Lucknow",
+        },
+        skills: DATA.skills.map((s) => s.name).join(", "),
+        responsibilities:
+          "Building production-grade web applications, REST APIs, AI-powered solutions, frontend-backend integration, and database architecture.",
+        estimatedSalary: {
+          "@type": "MonetaryAmountDistribution",
+          name: "Full Stack Developer Salary in India",
+          currency: "INR",
         },
       },
 
@@ -444,6 +535,7 @@ export const jsonLd = {
     },
 
     // ── WebSite Schema ───────────────────────────────────────────────────
+    // Enables sitelinks search box in Google results.
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
@@ -454,6 +546,18 @@ export const jsonLd = {
         "@id": `${SITE_URL}/#person`,
       },
       inLanguage: "en-US",
+
+      // ── SearchAction (Google Sitelinks Search Box) ──
+      // Enables the search box directly in Google SERP results.
+      // Users can search within the site from Google itself.
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
 
     // ── ProfilePage Schema ───────────────────────────────────────────────
@@ -474,10 +578,18 @@ export const jsonLd = {
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
       },
+
+      // ── Speakable (Voice Search Optimization — 2026 trend) ──
+      // Tells Google which sections are suitable for voice/audio readout.
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["#hero", ".text-foreground"],
+      },
     },
 
     // ── BreadcrumbList Schema ───────────────────────────────────────────
-    // Helps search engines understand navigation trails
+    // Helps search engines understand navigation trails.
+    // Complete breadcrumb with all site routes for full SERP coverage.
     {
       "@type": "BreadcrumbList",
       "@id": `${SITE_URL}/#breadcrumb`,
@@ -494,7 +606,40 @@ export const jsonLd = {
           name: "Blog",
           item: `${SITE_URL}/blog`,
         },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Introduction",
+          item: `${SITE_URL}/introduction`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Notes",
+          item: `${SITE_URL}/notes`,
+        },
       ],
+    },
+
+    // ── Blog Schema ─────────────────────────────────────────────────────
+    // Tells Google this site has a blog section with technical articles.
+    // Improves indexing of blog content and can trigger blog-specific rich results.
+    {
+      "@type": "Blog",
+      "@id": `${SITE_URL}/#blog`,
+      url: `${SITE_URL}/blog`,
+      name: `${DATA.name} — Technical Blog`,
+      description: `Technical blog by ${DATA.name}. Thoughts, tutorials, and guides on Python, Django, React, Next.js, AI, and software engineering.`,
+      author: {
+        "@id": `${SITE_URL}/#person`,
+      },
+      publisher: {
+        "@id": `${SITE_URL}/#person`,
+      },
+      isPartOf: {
+        "@id": `${SITE_URL}/#website`,
+      },
+      inLanguage: "en-US",
     },
 
     // ── CollectionPage Schema (Projects Portfolio) ───────────────────────
@@ -515,6 +660,76 @@ export const jsonLd = {
       hasPart: DATA.projects.map((project) => ({
         "@id": `${SITE_URL}/#project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
       })),
+    },
+
+    // ── ItemList Schema (Skills & Technologies) ─────────────────────────
+    // Presents the developer's skills as a structured list for rich results.
+    // Google can use this to understand expertise areas.
+    {
+      "@type": "ItemList",
+      "@id": `${SITE_URL}/#skills`,
+      name: `${DATA.name} — Technical Skills`,
+      description: `Technical skills and expertise of ${DATA.name}`,
+      numberOfItems: DATA.skills.length,
+      itemListElement: DATA.skills.map((skill, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: skill.name,
+        url: SITE_URL,
+      })),
+    },
+
+    // ── FAQPage Schema (Introduction Q&A → Rich Results) ────────────────
+    // Google displays FAQ rich results directly in SERPs.
+    // These are sourced from the introduction/interview-prep Q&A content.
+    // Only including the most impactful questions for rich result eligibility.
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/#faq`,
+      url: `${SITE_URL}/introduction`,
+      name: `About ${DATA.name} — FAQ`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Who is Hemant Sonkar?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Hemant Sonkar is a Full Stack Developer and AI Engineer based in Lucknow, India. He is pursuing his B.Tech in Computer Science at KMCLU and works as a Full Stack Developer Intern at Techpile. He specializes in Python, Django, React.js, and AI-powered solutions including RAG systems and multi-agent architectures.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What technologies does Hemant Sonkar specialize in?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Hemant specializes in Python, Django, Django REST Framework, React.js, TypeScript, Next.js, PostgreSQL, MongoDB, Redis, Docker, LangChain, CrewAI, and OpenAI API. He has expertise in both full-stack web development and AI/ML engineering.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What are Hemant Sonkar's notable projects?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "His flagship projects include AI-ROS (AI Autonomous Research OS) — a production-grade SaaS platform with multi-agent AI, RAG-based document intelligence, and real-time collaboration; and AgroIntel AI — an AI-based crop disease detection system using deep learning (CNN & ResNet) with a Django REST API backend.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is Hemant Sonkar available for hire?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, Hemant Sonkar is open to both freelance and full-time opportunities. He is available for full-stack development, AI engineering, and software development roles. Contact him via email at oficialhemant112@gmail.com or through his LinkedIn profile.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Where is Hemant Sonkar located?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Hemant Sonkar is based in Lucknow, Uttar Pradesh, India. He is open to remote work opportunities as well as on-site positions.",
+          },
+        },
+      ],
     },
 
     // ── SoftwareApplication / CreativeWork for Projects (Dynamic) ───────
@@ -543,6 +758,7 @@ export const jsonLd = {
           : `${SITE_URL}${project.image}`,
       }),
       softwareRequirements: project.technologies.join(", "),
+      datePublished: project.dates.split("—")[0]?.trim() || "2025",
       inLanguage: "en-US",
       isPartOf: {
         "@id": `${SITE_URL}/#website`,
@@ -550,3 +766,89 @@ export const jsonLd = {
     })),
   ],
 };
+
+// ============================================================================
+// 📝 BLOG POST JSON-LD HELPER — Per-Article Structured Data
+// ============================================================================
+//
+// This helper generates Article JSON-LD for individual blog posts.
+// Import and use it in the blog/[slug]/page.tsx layout to inject
+// post-specific structured data for rich results (breadcrumbs, author, etc.)
+// ============================================================================
+
+/**
+ * Generates Article JSON-LD for a single blog post.
+ *
+ * @param post - Blog post data with title, description, slug, publishedAt, etc.
+ * @returns A complete JSON-LD object for the Article schema.
+ *
+ * Usage in blog/[slug]/page.tsx:
+ * ```tsx
+ * import { blogPostJsonLd } from "@/app/Meta";
+ * const jsonLd = blogPostJsonLd({ title, description, slug, publishedAt, updatedAt });
+ * ```
+ */
+export function blogPostJsonLd(post: {
+  title: string;
+  description?: string;
+  slug: string;
+  publishedAt: string;
+  updatedAt?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${SITE_URL}/blog/${post.slug}/#article`,
+    headline: post.title,
+    description:
+      post.description ||
+      `${post.title} — a technical article by ${DATA.name}`,
+    url: `${SITE_URL}/blog/${post.slug}`,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    author: {
+      "@id": `${SITE_URL}/#person`,
+    },
+    publisher: {
+      "@id": `${SITE_URL}/#person`,
+    },
+    isPartOf: {
+      "@id": `${SITE_URL}/#blog`,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
+    },
+    image: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/opengraph-image`,
+      width: 1200,
+      height: 630,
+    },
+    inLanguage: "en-US",
+    // BreadcrumbList for the blog post
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${SITE_URL}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.title,
+          item: `${SITE_URL}/blog/${post.slug}`,
+        },
+      ],
+    },
+  };
+}
