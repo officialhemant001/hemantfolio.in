@@ -2,29 +2,29 @@ import type { Metadata } from "next";
 import { DATA } from "@/data/resume";
 
 export const metadata: Metadata = {
-  title: "Introduction & Interview Prep — Hemant Sonkar",
-  description: "Professional introduction, core strengths, career journey, and technical interview preparation hub of Hemant Sonkar, Full Stack Developer & AI Engineer.",
+  title: `Interview Preparation Hub — ${DATA.name}`,
+  description: `Complete interview preparation hub for ${DATA.name}. Includes HR questions, technical topics (Python, Django, React), project deep-dives, coding round challenges, and a 7-day preparation roadmap.`,
   alternates: {
     canonical: `${DATA.url}/introduction`,
   },
   keywords: [
-    "Hemant Sonkar About",
-    "Interview Prep Hub",
-    "Full Stack Developer Interview Questions",
-    "AI Engineer Portfolio Lucknow",
-    "KMCLU Computer Science",
-    "Techpile Intern Hemant Sonkar",
+    `${DATA.name} Introduction`,
+    "Interview Preparation",
+    "Technical Q&A",
+    "HR Questions",
+    "Django React developer interview",
+    "Coding Round Practice",
   ],
   openGraph: {
-    title: "Introduction & Interview Prep — Hemant Sonkar",
-    description: "Professional introduction, core strengths, career journey, and technical interview preparation hub of Hemant Sonkar, Full Stack Developer & AI Engineer.",
+    title: `Interview Preparation Hub — ${DATA.name}`,
+    description: `Complete interview preparation hub for ${DATA.name}. Includes HR questions, technical topics (Python, Django, React), project deep-dives, coding round challenges, and a 7-day preparation roadmap.`,
     url: `${DATA.url}/introduction`,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Introduction & Interview Prep — Hemant Sonkar",
-    description: "Professional introduction, core strengths, career journey, and technical interview preparation hub of Hemant Sonkar, Full Stack Developer & AI Engineer.",
+    title: `Interview Preparation Hub — ${DATA.name}`,
+    description: `Complete interview preparation hub for ${DATA.name}. Includes HR questions, technical topics (Python, Django, React), project deep-dives, coding round challenges, and a 7-day preparation roadmap.`,
   },
 };
 

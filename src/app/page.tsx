@@ -108,6 +108,7 @@ export default function Page() {
                 .map(([name, social]) => (
                   <Link
                     key={name}
+                    id={`social-link-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -118,6 +119,7 @@ export default function Page() {
                   </Link>
                 ))}
               <Link
+                id="contact-email-link"
                 href={`mailto:${DATA.contact.email}`}
                 className="text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-md hover:bg-muted/60"
                 title="Email"
@@ -254,6 +256,7 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY * 10 + index * 0.05}
               >
                 <Link
+                  id={`education-link-${education.school.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                   href={education.href}
                   target="_blank"
                   rel="noopener noreferrer"
