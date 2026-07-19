@@ -39,7 +39,7 @@ export default function ResumeSection() {
               </button>
               
               <Link
-                href="/typs.pdf"
+                href="/Lucknow Resu.pdf"
                 target="_blank"
                 download
                 className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium shadow-sm hover:bg-muted transition-all active:scale-95 w-full sm:w-auto group/download"
@@ -64,7 +64,7 @@ export default function ResumeSection() {
               </h3>
               <div className="flex items-center gap-2">
                 <Link
-                  href="/typs.pdf"
+                  href="/Lucknow Resu.pdf"
                   target="_blank"
                   download
                   className="p-2 hover:bg-muted rounded-md transition-colors text-muted-foreground hover:text-foreground"
@@ -85,7 +85,7 @@ export default function ResumeSection() {
             {/* Modal Body (PDF Viewer) */}
             <div className="flex-1 w-full bg-muted/10 overflow-hidden relative">
               <iframe 
-                src="/typs.pdf#view=FitH" 
+                src="/Lucknow Resu.pdf#view=FitH" 
                 className="w-full h-full border-none"
                 title="Resume PDF"
               />

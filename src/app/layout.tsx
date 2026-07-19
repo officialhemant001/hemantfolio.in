@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { siteMetadata, jsonLd } from "./Meta";
+import { SOCIAL_LINKS } from "@/data/resume";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const geist = Geist({
@@ -40,11 +42,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {/* Verification links to social profiles to establish digital identity and authority */}
-        <link rel="me" href="https://github.com/officialhemant001" />
-        <link rel="me" href="https://www.linkedin.com/in/hemant-sonkar-developer" />
-        <link rel="me" href="https://x.com/Hemantsonkar001" />
-        <link rel="me" href="https://www.instagram.com/hemant_.112/" />
-        <link rel="me" href="https://www.facebook.com/share/1DFNQSg8Dj/" />
+        <link rel="me" href={SOCIAL_LINKS.github} />
+        <link rel="me" href={SOCIAL_LINKS.linkedin} />
+        <link rel="me" href={SOCIAL_LINKS.twitter} />
+        <link rel="me" href={SOCIAL_LINKS.instagram} />
+        <link rel="me" href={SOCIAL_LINKS.facebook} />
       </head>
       <body
         className={cn(
@@ -55,9 +57,13 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
+            {/* Viewport premium frame border */}
+            <div className="page-border-frame" />
+            
             <TopNavbar />
             <div className="relative z-10 max-w-2xl mx-auto min-h-screen py-6 sm:py-10 px-4 sm:px-6">
               {children}
+              <Footer />
             </div>
             <Toaster position="bottom-right" theme="system" />
           </TooltipProvider>

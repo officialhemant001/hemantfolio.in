@@ -15,7 +15,7 @@
 // 2026 SEO Enhancements:
 //   - Google E-E-A-T signals via comprehensive Person schema
 //   - ProfilePage JSON-LD for personal branding (Google supports since 2024)
-//   - Social profile discovery: LinkedIn, GitHub, Instagram, X
+//   - Social profile discovery: LinkedIn, GitHub, Instagram, X, Facebook
 //   - Recruiter-optimized keywords and description
 //   - Geographic targeting with GeoCoordinates for local search
 //   - Enhanced Open Graph with profile namespace for LinkedIn optimization
@@ -38,7 +38,7 @@
 // ============================================================================
 
 import type { Metadata } from "next";
-import { DATA } from "@/data/resume";
+import { DATA, SOCIAL_LINKS } from "@/data/resume";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -53,7 +53,7 @@ const SITE_URL = DATA.url; // "https://hemantsonkar.dev"
  * - Pipe-separated roles maximize keyword matching
  * - Under 60 characters to avoid SERP truncation
  */
-const TITLE = "Hemant Sonkar — Full Stack Developer | AI Engineer";
+const TITLE = "Hemant Sonkar — Full Stack & AI  Developer";
 
 /**
  * Meta description — optimized for SERP display (under 155 chars ideal).
@@ -68,7 +68,7 @@ const TITLE = "Hemant Sonkar — Full Stack Developer | AI Engineer";
  *    still influences click-through rate and social share previews.
  */
 const DESCRIPTION =
-  "Hemant Sonkar — Full Stack Developer & AI Engineer specializing in Python, Django, React, Next.js, and TypeScript. Building scalable web apps, REST APIs, and AI-powered solutions. Open for freelance & full-time roles.";
+  "Hemant Sonkar — Full Stack & AI Developer specializing in Python, Django, React, Next.js, JavaScript, and TypeScript. Building scalable web applications, RESTful APIs, AI-powered systems, and modern software solutions with clean architecture, high performance, and exceptional user experiences.";
 
 /**
  * SEO keywords — strategically organized by search intent.
@@ -257,12 +257,14 @@ export const siteMetadata: Metadata = {
     siteName: `${DATA.name} — Portfolio`,
     title: TITLE,
     description: DESCRIPTION,
+    emails: [SOCIAL_LINKS.email],
+    phoneNumbers: [SOCIAL_LINKS.phone],
     images: [
       {
         url: "/opengraph-image",  // Resolved by Next.js opengraph-image.tsx
         width: 1200,
         height: 630,
-        alt: `${DATA.name} — Full Stack Developer & AI Engineer | Portfolio`,
+        alt: `${DATA.name} — Full Stack AI Developer | Portfolio`,
         type: "image/png",
       },
     ],
@@ -364,7 +366,17 @@ export const siteMetadata: Metadata = {
     "ICBM": "26.8467, 80.9462",
 
     // ── Profile / Identity Discovery ──
+    // Open Graph profile namespace tags for social platform association.
+    // Facebook, LinkedIn, and other OG consumers use these to link profiles.
     "profile:username": "officialhemant001",
+    "profile:first_name": "Hemant",
+    "profile:last_name": "Sonkar",
+    "profile:gender": "male",
+
+    // ── Social Profile Links (explicit meta for crawlers) ──
+    // These "me" rel-equivalent meta tags help search engines and identity
+    // aggregators associate all official profiles with this website.
+    "article:author": SOCIAL_LINKS.facebook,
 
     // ── Content Language (explicit for multilingual crawlers) ──
     "content-language": "en-US",
@@ -426,7 +438,7 @@ export const jsonLd = {
         height: 400,
         caption: `${DATA.name} — Full Stack Developer & AI Engineer`,
       },
-      jobTitle: "Full Stack Developer & AI Engineer",
+      jobTitle: "Full Stack Developer & AI Developer ",
       description: DESCRIPTION,
       email: DATA.contact.email,
       telephone: DATA.contact.tel,
@@ -451,14 +463,18 @@ export const jsonLd = {
       },
 
       // ── Social Profiles (sameAs) ──
-      // Dynamic resolution from profile links
+      // Explicit, curated list of all official social profiles.
+      // These tell Google, Bing, and other engines which social accounts
+      // belong to this person — critical for Knowledge Panel eligibility
+      // and E-E-A-T identity consolidation.
       sameAs: [
-        ...Object.values(DATA.contact.social)
-          .map((s) => s.url)
-          .filter((url) => url && !url.startsWith("mailto:")),
-        "https://www.instagram.com/hemant_.112/",
-        "https://www.facebook.com/share/1DFNQSg8Dj/",
-      ].filter((value, index, self) => self.indexOf(value) === index),
+        SOCIAL_LINKS.portfolio,
+        SOCIAL_LINKS.github,
+        SOCIAL_LINKS.linkedin,
+        SOCIAL_LINKS.facebook,
+        SOCIAL_LINKS.twitter,
+        SOCIAL_LINKS.instagram,
+      ],
 
       // ── Skills / Expertise (Dynamic) ──
       knowsAbout: [
@@ -603,18 +619,30 @@ export const jsonLd = {
         {
           "@type": "ListItem",
           position: 2,
+          name: "Projects",
+          item: `${SITE_URL}/projects`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
           name: "Blog",
           item: `${SITE_URL}/blog`,
         },
         {
           "@type": "ListItem",
-          position: 3,
+          position: 4,
+          name: "Certifications",
+          item: `${SITE_URL}/certificate`,
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
           name: "Introduction",
           item: `${SITE_URL}/introduction`,
         },
         {
           "@type": "ListItem",
-          position: 4,
+          position: 6,
           name: "Notes",
           item: `${SITE_URL}/notes`,
         },
@@ -730,6 +758,32 @@ export const jsonLd = {
           },
         },
       ],
+    },
+
+    // ── Resume Document Schema ──
+    {
+      "@type": "CreativeWork",
+      "@id": `${SITE_URL}/#resumedocument`,
+      name: `${DATA.name} Resume`,
+      url: `${SITE_URL}/Lucknow Resu.pdf`,
+      author: {
+        "@id": `${SITE_URL}/#person`,
+      },
+      inLanguage: "en-US",
+      description: `ATS-friendly professional resume of ${DATA.name}`,
+    },
+
+    // ── Certificate Document Schema ──
+    {
+      "@type": "CreativeWork",
+      "@id": `${SITE_URL}/#certificatedocument`,
+      name: `${DATA.name} Certifications`,
+      url: `${SITE_URL}/certificate`,
+      author: {
+        "@id": `${SITE_URL}/#person`,
+      },
+      inLanguage: "en-US",
+      description: `Professional certifications and accomplishments of ${DATA.name}`,
     },
 
     // ── SoftwareApplication / CreativeWork for Projects (Dynamic) ───────

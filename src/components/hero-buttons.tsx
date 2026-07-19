@@ -22,44 +22,58 @@ export function HeroButtons() {
 
   return (
     <div className="flex flex-wrap items-center gap-3 relative" ref={dropdownRef}>
+      {/* Resume Button */}
       <Link
-        href="/Lucknow%20Resu.pdf"
+        href="/Lucknow Resu.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium shadow-sm hover:bg-muted transition-all duration-200 hover:shadow-md"
+        id="hero-resume-button"
+        className="group inline-flex items-center gap-2 rounded-xl border border-border/80 bg-background/60 backdrop-blur-xs px-4.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-muted/80 hover:border-border hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+        aria-label="Download Resume"
       >
-        <FileText className="size-4" />
+        <FileText className="size-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
         Resume / CV
       </Link>
-      
+
+      {/* Get in Touch Button */}
       <Link
         href={`mailto:${DATA.contact.email}`}
-        className="inline-flex items-center gap-2 rounded-lg bg-foreground text-background px-4 py-2.5 text-sm font-medium shadow-sm hover:opacity-90 transition-all duration-200 hover:shadow-md"
+        id="hero-contact-button"
+        className="group inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4.5 py-2.5 text-sm font-semibold shadow-md hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 relative overflow-hidden"
+        aria-label="Contact via Email"
       >
-        <Send className="size-4" />
+        <Send className="size-4 group-hover:translate-x-0.5 transition-transform duration-300" />
         Get in touch
       </Link>
 
+      {/* About Dropdown */}
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium shadow-sm transition-all duration-200 hover:shadow-md hover:bg-muted ${isOpen ? 'bg-muted' : ''}`}
+          id="hero-about-button"
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+          className={`inline-flex items-center gap-2 rounded-xl border border-border/80 bg-background/60 backdrop-blur-xs px-4.5 py-2.5 text-sm font-semibold shadow-sm transition-all duration-300 hover:shadow-md hover:bg-muted/80 hover:-translate-y-0.5 active:translate-y-0 ${isOpen ? "bg-muted/80" : ""}`}
         >
           About
-          <ChevronDown className={`size-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`size-4 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
         </button>
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute left-0 top-full mt-2 w-48 rounded-xl border border-border bg-background p-1 shadow-lg transition-all duration-200 origin-top-left z-50 ${
-            isOpen ? 'opacity-100 scale-100 translate-y-0 visible' : 'opacity-0 scale-95 -translate-y-2 invisible'
+          role="menu"
+          className={`absolute left-0 top-full mt-2 w-48 rounded-xl border border-border bg-background/95 backdrop-blur-md p-1 shadow-lg transition-all duration-200 origin-top-left z-50 ${
+            isOpen
+              ? "opacity-100 scale-100 translate-y-0 visible"
+              : "opacity-0 scale-95 -translate-y-2 invisible"
           }`}
         >
           <div className="flex flex-col">
             <Link
               href="/introduction"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted transition-colors"
+              role="menuitem"
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted/60 transition-colors"
             >
               <User className="size-4" />
               Introduction
@@ -67,7 +81,8 @@ export function HeroButtons() {
             <Link
               href="/notes"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted transition-colors"
+              role="menuitem"
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted/60 transition-colors"
             >
               <BookOpen className="size-4" />
               Notes

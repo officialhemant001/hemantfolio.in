@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = DATA.url; // "https://hemantsonkar.dev"
 
   // 1. Static Pages
-  const staticRoutes = ["", "/blog", "/introduction", "/notes"].map((route) => {
+  const staticRoutes = ["", "/projects", "/blog", "/certificate", "/introduction", "/notes"].map((route) => {
     // Determine the priority and change frequency of different pages
     let priority = 0.8;
     let changeFrequency: "weekly" | "monthly" = "weekly";
@@ -21,9 +21,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (route === "") {
       priority = 1.0;
       changeFrequency = "weekly";
+    } else if (route === "/projects") {
+      priority = 0.95;
+      changeFrequency = "weekly";
     } else if (route === "/blog") {
       priority = 0.9;
       changeFrequency = "weekly";
+    } else if (route === "/certificate") {
+      priority = 0.85;
+      changeFrequency = "monthly";
     } else if (route === "/notes") {
       priority = 0.8;
       changeFrequency = "weekly";
