@@ -53,7 +53,7 @@ const SITE_URL = DATA.url; // "https://hemantsonkar.dev"
  * - Pipe-separated roles maximize keyword matching
  * - Under 60 characters to avoid SERP truncation
  */
-const TITLE = "Hemant Sonkar — Full Stack & AI  Developer";
+const TITLE = "Hemant Sonkar — Full Stack & AI Developer";
 
 /**
  * Meta description — optimized for SERP display (under 155 chars ideal).
@@ -237,10 +237,7 @@ export const siteMetadata: Metadata = {
   // Prevents duplicate content issues and declares the canonical version.
   // Critical for SEO — search engines consolidate ranking signals here.
   alternates: {
-    canonical: SITE_URL,
-    languages: {
-      "en-US": SITE_URL,
-    },
+    canonical: "/",
   },
 
   // ── Open Graph (LinkedIn, Facebook, WhatsApp, Discord, Slack) ───────────
@@ -438,7 +435,7 @@ export const jsonLd = {
         height: 400,
         caption: `${DATA.name} — Full Stack Developer & AI Engineer`,
       },
-      jobTitle: "Full Stack Developer & AI Developer ",
+      jobTitle: "Full Stack & AI Developer",
       description: DESCRIPTION,
       email: DATA.contact.email,
       telephone: DATA.contact.tel,

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { DATA } from "@/data/resume";
 import type { Metadata } from "next";
 import {
@@ -91,10 +92,13 @@ export default async function ProjectDetailPage({
           {project.image && (
             <BlurFade delay={BLUR_FADE_DELAY * 2}>
               <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden border border-border/60 shadow-lg">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>

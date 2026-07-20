@@ -12,7 +12,6 @@ import CertificationsSection from "@/components/section/certifications-section";
 import GithubStatsSection from "@/components/section/github-stats-section";
 import { HeroButtons } from "@/components/hero-buttons";
 import { PremiumFeaturedCard } from "@/components/premium-featured-card";
-import ContactSection from "@/components/section/contact-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -358,14 +357,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ── Contact Section ────────────────────────────────────────── */}
-      <section id="contact" className="py-10 border-t border-border/30">
-        <div className="mx-auto w-full max-w-2xl">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <ContactSection />
-          </BlurFade>
-        </div>
-      </section>
+
 
       {/* Bottom spacing for scroll */}
       <div className="h-20" />

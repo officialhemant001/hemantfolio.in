@@ -27,6 +27,17 @@ export type Hackathon = {
   links?: readonly { title: string; icon: React.ReactNode; href: string }[];
 };
 
+export type Certification = {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  pdfUrl: string;
+  gradient: string;
+  iconColor: string;
+  hoverBorder: string;
+};
+
 export type ProjectStatus = "Completed" | "Live" | "In Progress";
 
 export type Project = {
@@ -334,7 +345,7 @@ export const DATA = {
         },
       ],
       image:
-        "https://images.unsplash.com/photo-1504608524841-42584120d693?q=80&w=1000&auto=format&fit=crop",
+        "/assets/weather.png",
       video: "",
     },
 
@@ -534,4 +545,38 @@ export const DATA = {
 
   // ── Hackathons ─────────────────────────────────────────────────────
   hackathons: [] as Hackathon[],
+
+  // ── Certifications ──────────────────────────────────────────────────
+  certifications: [
+    {
+      id: "postman-api",
+      title: "Postman API Fundamentals Student Expert",
+      issuer: "Postman",
+      date: "2024",
+      pdfUrl: "/certificates/crt1.pdf",
+      gradient: "from-orange-500/20 via-rose-500/20 to-transparent",
+      iconColor: "text-orange-500",
+      hoverBorder: "hover:border-orange-500/50",
+    },
+    {
+      id: "techpile-fullstack",
+      title: "Full Stack Web Development",
+      issuer: "Techpile",
+      date: "2024",
+      pdfUrl: "/certificates/crt1.pdf",
+      gradient: "from-blue-500/20 via-cyan-500/20 to-transparent",
+      iconColor: "text-blue-500",
+      hoverBorder: "hover:border-blue-500/50",
+    },
+    {
+      id: "hackerrank-python",
+      title: "Python & Data Structures",
+      issuer: "HackerRank",
+      date: "2023",
+      pdfUrl: "/certificates/crt1.pdf",
+      gradient: "from-green-500/20 via-emerald-500/20 to-transparent",
+      iconColor: "text-green-500",
+      hoverBorder: "hover:border-green-500/50",
+    },
+  ] as readonly Certification[],
 } as const;

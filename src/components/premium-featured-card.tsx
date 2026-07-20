@@ -3,6 +3,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useRef, useCallback } from "react";
 import { Github, Globe, ArrowUpRight, CheckCircle2, Clock, Zap } from "lucide-react";
 import type { Project, ProjectStatus } from "@/data/resume";
@@ -152,11 +153,14 @@ export function PremiumFeaturedCard({
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : project.image && !imageError ? (
-          <img
+          <Image
             src={project.image}
             alt={project.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            priority={index === 0}
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
             onError={() => setImageError(true)}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/60" />
@@ -293,11 +297,13 @@ export function CompactProjectCard({ project, className }: CompactProjectCardPro
         tabIndex={-1}
       >
         {project.image && !imageError ? (
-          <img
+          <Image
             src={project.image}
             alt={project.title}
+            fill
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             onError={() => setImageError(true)}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/60" />
