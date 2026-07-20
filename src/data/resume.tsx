@@ -517,29 +517,34 @@ export const DATA = {
   // ── Skill Categories ────────────────────────────────────────────────
   skillCategories: [
     {
+      category: "Languages",
+      icon: "💻",
+      items: ["Python", "JavaScript", "TypeScript", "HTML5", "CSS3", "SQL"],
+    },
+    {
       category: "Frontend",
       icon: "🎨",
-      items: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Bootstrap"],
+      items: ["React.js", "Next.js", "Tailwind CSS", "Bootstrap", "ShadCN UI"],
     },
     {
       category: "Backend",
       icon: "⚙️",
-      items: ["Python", "Django", "FastAPI", "Node.js", "Express.js"],
+      items: ["Django", "Django REST Framework", "FastAPI", "Node.js", "Celery", "WebSocket"],
     },
     {
       category: "Database",
       icon: "🗄️",
-      items: ["PostgreSQL", "MySQL", "SQLite", "MongoDB", "Redis"],
+      items: ["PostgreSQL", "MongoDB", "SQLite", "Redis", "ChromaDB"],
     },
     {
       category: "AI & Machine Learning",
       icon: "🧠",
-      items: ["OpenAI", "Gemini", "LangChain", "RAG", "Prompt Engineering", "LLM", "Vector Database"],
+      items: ["OpenAI API", "Gemini API", "LangChain", "CrewAI", "RAG", "CNN / ResNet", "NLP (NLTK/spaCy)", "TF-IDF", "Prompt Engineering", "LLM"],
     },
     {
       category: "Tools & DevOps",
       icon: "🔧",
-      items: ["Git", "GitHub", "Docker", "Postman", "VS Code", "Linux", "Vercel"],
+      items: ["Git", "GitHub", "Docker", "Postman", "VS Code", "Linux", "Vercel", "REST APIs", "JWT"],
     },
   ],
 
