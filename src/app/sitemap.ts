@@ -10,10 +10,10 @@ import { DATA } from "@/data/resume";
  * Next.js automatically caches this route according to static export rules.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = DATA.url; // "https://hemantsonkar.dev"
+  const baseUrl = DATA.url; // "https://hemantfolio.in.vercel.app"
 
   // 1. Static Pages
-  const staticRoutes = ["", "/projects", "/blog", "/certificate", "/introduction", "/notes"].map((route) => {
+  const staticRoutes: MetadataRoute.Sitemap = ["", "/projects", "/blog", "/certificate", "/introduction", "/notes"].map((route) => {
     // Determine the priority and change frequency of different pages
     let priority = 0.8;
     let changeFrequency: "weekly" | "monthly" = "weekly";
@@ -46,8 +46,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  // 2. Dynamic Blog Posts
-  const blogRoutes = allPosts.map((post) => {
+  // 2. Dynamic Project Pages
+  const projectRoutes: MetadataRoute.Sitemap = DATA.projects.map((project) => ({
+    url: `${baseUrl}/projects/${project.slug}`,
+    lastModified: new Date().toISOString().split("T")[0],
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  // 3. Dynamic Blog Posts
+  const blogRoutes: MetadataRoute.Sitemap = allPosts.map((post) => {
     const slug = post._meta.path.replace(/\.mdx$/, "");
     return {
       url: `${baseUrl}/blog/${slug}`,
@@ -58,5 +66,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticRoutes, ...blogRoutes];
+  return [...staticRoutes, ...projectRoutes, ...blogRoutes];
 }

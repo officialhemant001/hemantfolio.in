@@ -1,5 +1,4 @@
- 
-
+/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/og";
 import { allPosts } from "content-collections";
 import { DATA } from "@/data/resume";

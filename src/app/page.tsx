@@ -19,8 +19,8 @@ const BLUR_FADE_DELAY = 0.04;
 const inlineTechBadges = [
   { name: "Python", icon: "🐍" },
   { name: "Django", icon: "🌿" },
-  { name: "React.js", icon: "⚛️" },
   { name: "PostgreSQL", icon: "🐘" },
+  { name: "React.js", icon: "⚛️" },
 ];
 
 export default function Page() {
@@ -42,7 +42,7 @@ export default function Page() {
                 {/* Premium pulse glow */}
                 <div className="absolute inset-0 rounded-full bg-linear-to-tr from-amber-500/20 to-primary/20 opacity-70 blur-md group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
                 <Avatar className="size-20 md:size-24 border-2 border-border/40 rounded-full shadow-lg ring-4 ring-background relative z-10 transition-transform duration-300 group-hover:scale-[1.02]">
-                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="object-cover" />
+                  <AvatarImage alt={`${DATA.name} — Python & Django Developer`} src={DATA.avatarUrl} className="object-cover" />
                   <AvatarFallback>{DATA.initials}</AvatarFallback>
                 </Avatar>
                 {/* India Flag */}
@@ -74,6 +74,9 @@ export default function Page() {
                   <span className="gradient-text">{DATA.name}</span>
                   <BadgeCheck className="size-6 text-blue-500 fill-blue-500 stroke-white shrink-0" />
                 </h1>
+                <p className="text-sm font-bold text-primary tracking-wide">
+                  Python Developer | Django Developer
+                </p>
                 <div className="text-muted-foreground text-base md:text-lg font-medium h-6">
                   <HeroTypeAnimation />
                 </div>
@@ -84,7 +87,7 @@ export default function Page() {
           {/* Bio with inline tech badges */}
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
             <div className="text-[15px] md:text-base leading-relaxed text-foreground/90 font-medium">
-              <span>I build production-grade web apps and AI systems using </span>
+              <span>I develop production-grade web applications, RESTful APIs, and scalable backend architectures using </span>
               {inlineTechBadges.map((tech, idx) => (
                 <span key={tech.name}>
                   <span className="inline-flex items-center gap-1.5 rounded-md bg-muted/80 dark:bg-muted/50 border border-border/40 px-2 py-0.5 text-sm font-semibold text-foreground mx-0.5 align-middle">
@@ -95,11 +98,7 @@ export default function Page() {
                   {idx === inlineTechBadges.length - 2 && <span> and </span>}
                 </span>
               ))}
-              <span>. With a focus on </span>
-              <span className="font-bold text-foreground">AI Automation</span>
-              <span>. Enthusiastic about </span>
-              <span className="font-bold text-foreground">RAG</span>
-              <span>.</span>
+              <span>. Focused on clean database design, high-performance APIs, and seamless full-stack integration.</span>
             </div>
           </BlurFade>
 
@@ -152,6 +151,52 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
             <div className="pt-6 flex justify-center animate-bounce hidden sm:flex pointer-events-none">
               <ChevronDown className="size-5 text-muted-foreground/40" />
+            </div>
+          </BlurFade>
+        </div>
+      </section>
+
+      {/* ── About Me Section ────────────────────────────────────────── */}
+      <section id="about" className="py-10 border-t border-border/30">
+        <div className="mx-auto w-full max-w-2xl space-y-4">
+          <BlurFade delay={BLUR_FADE_DELAY * 4.6}>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-1">Introduction</p>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground">About Me</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 4.8}>
+            <div className="prose dark:prose-invert text-sm sm:text-base leading-relaxed text-muted-foreground font-medium space-y-3">
+              <p>
+                I&apos;m <strong className="text-foreground font-semibold">Hemant Sonkar</strong>, a Computer Science Engineering student at{" "}
+                <a
+                  href="https://kmclu.ac.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline font-semibold"
+                >
+                  Khwaja Moinuddin Chishti Language University, Lucknow
+                </a>
+                {" "}and a dedicated <strong className="text-foreground font-semibold">Python & Django Developer</strong>.
+              </p>
+              <p>
+                I specialize in building reliable backend systems, RESTful APIs, and database-driven web applications using{" "}
+                <code className="text-xs bg-muted px-1.5 py-0.5 rounded text-foreground font-mono">Python</code>,{" "}
+                <code className="text-xs bg-muted px-1.5 py-0.5 rounded text-foreground font-mono">Django</code>,{" "}
+                <code className="text-xs bg-muted px-1.5 py-0.5 rounded text-foreground font-mono">PostgreSQL</code>, and{" "}
+                <code className="text-xs bg-muted px-1.5 py-0.5 rounded text-foreground font-mono">React.js</code>.
+                Currently working as a <strong className="text-foreground font-semibold">Full Stack Developer Intern</strong> at Techpile,
+                I focus on backend module design, performance optimization, and seamless frontend-backend integration.
+              </p>
+              <p>
+                Explore all of my open-source code and projects on my verified{" "}
+                <a
+                  href="https://github.com/officialhemant001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline font-semibold"
+                >
+                  GitHub profile (@officialhemant001)
+                </a>.
+              </p>
             </div>
           </BlurFade>
         </div>

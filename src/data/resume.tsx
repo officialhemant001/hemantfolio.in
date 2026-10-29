@@ -70,13 +70,12 @@ export type Project = {
 // Single source of truth for all social URLs. Used across:
 // Hero, Footer, Contact, About, Resume, Projects, Certificate,
 // SEO, JSON-LD, Open Graph, Twitter Cards, Structured Data
+// ONLY genuine, verified profile URLs are listed here.
 export const SOCIAL_LINKS = {
   github: "https://github.com/officialhemant001",
-  linkedin: "https://www.linkedin.com/in/hemantsonkar001",
-  facebook: "https://www.facebook.com/hemantsonkar001",
-  instagram: "https://www.instagram.com/hemant_.112",
-  twitter: "https://x.com/Hemantsonkar001",
-  portfolio: "https://hemantfolio-in.vercel.app",
+  facebook: "https://www.facebook.com/officialhemant112",
+  instagram: "https://www.instagram.com/hemant_.112/",
+  portfolio: "https://hemantfolio.in.vercel.app",
   email: "officialhemant112@gmail.com",
   phone: "+916201501329",
 } as const;
@@ -89,21 +88,21 @@ export const DATA = {
   location: "Lucknow, India",
   locationLink: "https://www.google.com/maps/place/lucknow",
   description:
-    "Full Stack Web Developer & AI Engineer. Building scalable web apps and intelligent systems with Python, Django & React.",
+    "Python & Django Developer. Building robust backend architectures, RESTful APIs, and scalable web applications with Python, Django, PostgreSQL, and React.",
   summary:
-    "I'm a **Computer Science Engineering** student at [Khwaja Moinuddin Chishti Language University, Lucknow](https://kmclu.ac.in/) with hands-on experience building production-grade web applications. I specialize in `Python`, `Django`, and `React.js`, with a strong focus on building REST APIs, AI-powered solutions, and database-driven systems. Currently working as a **Full Stack Developer Intern**, I'm passionate about frontend-backend integration, performance optimization, and solving real-world problems through technology.",
+    "I'm a **Computer Science Engineering** student at [Khwaja Moinuddin Chishti Language University, Lucknow](https://kmclu.ac.in/) and a dedicated **Python & Django Developer**. I specialize in building robust backend architectures, RESTful APIs, and scalable database systems using `Python`, `Django`, `PostgreSQL`, and `React.js`. Currently working as a **Full Stack Developer Intern** at Techpile, I have hands-on experience designing production-ready systems, optimizing API endpoints, and delivering end-to-end web applications with clean architecture and solid database modeling.",
   avatarUrl: "/me.jpeg",
 
   // ── Technical Skills (displayed as icon chips) ─────────────────────
   skills: [
     { name: "Python", icon: Python },
-    { name: "JavaScript", icon: Javascript },
-    { name: "React.js", icon: ReactLight },
     { name: "Django", icon: Django },
+    { name: "PostgreSQL", icon: Postgresql },
+    { name: "React.js", icon: ReactLight },
+    { name: "JavaScript", icon: Javascript },
     { name: "HTML5", icon: Html5 },
     { name: "CSS3", icon: Css3 },
     { name: "Bootstrap", icon: Bootstrap },
-    { name: "PostgreSQL", icon: Postgresql },
     { name: "MongoDB", icon: MongoDB },
     { name: "Docker", icon: Docker },
     { name: "Git", icon: Git },
@@ -128,29 +127,17 @@ export const DATA = {
         icon: Icons.github,
         navbar: true,
       },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: SOCIAL_LINKS.linkedin,
-        icon: Icons.linkedin,
-        navbar: true,
-      },
-      Facebook: {
-        name: "Facebook",
-        url: SOCIAL_LINKS.facebook,
-        icon: Icons.facebook,
-        navbar: false,
-      },
       Instagram: {
         name: "Instagram",
         url: SOCIAL_LINKS.instagram,
         icon: Icons.instagram,
         navbar: true,
       },
-      X: {
-        name: "X",
-        url: SOCIAL_LINKS.twitter,
-        icon: Icons.x,
-        navbar: false,
+      Facebook: {
+        name: "Facebook",
+        url: SOCIAL_LINKS.facebook,
+        icon: Icons.facebook,
+        navbar: true,
       },
       email: {
         name: "Send Email",

@@ -4,30 +4,32 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { paginate, normalizePage } from "@/lib/pagination";
 import { ChevronRight } from "lucide-react";
+import { DATA } from "@/data/resume";
 
 export const metadata: Metadata = {
   title: "Blog — Hemant Sonkar",
-  description: "Technical blog by Hemant Sonkar. Thoughts, tutorials, and guides on Python, Django, React, Next.js, and software engineering.",
+  description: "Technical blog by Hemant Sonkar. Guides, tutorials, and insights on Python, Django, REST APIs, React, Next.js, and backend engineering.",
   alternates: {
-    canonical: "https://hemantsonkar.dev/blog",
+    canonical: `${DATA.url}/blog`,
   },
   keywords: [
     "Hemant Sonkar Blog",
-    "Software Engineering Blog",
-    "Python Django React NextJS tutorials",
-    "Full Stack Developer Lucknow",
+    "Hemant Sonkar Python Django",
+    "Python Django Tutorials",
+    "Django REST Framework",
+    "Full Stack Python Developer",
     "Web Development Guides",
   ],
   openGraph: {
     title: "Blog — Hemant Sonkar",
-    description: "Technical blog by Hemant Sonkar. Thoughts, tutorials, and guides on Python, Django, React, Next.js, and software engineering.",
-    url: "https://hemantsonkar.dev/blog",
+    description: "Technical blog by Hemant Sonkar. Guides, tutorials, and insights on Python, Django, REST APIs, React, Next.js, and backend engineering.",
+    url: `${DATA.url}/blog`,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Blog — Hemant Sonkar",
-    description: "Technical blog by Hemant Sonkar. Thoughts, tutorials, and guides on Python, Django, React, Next.js, and software engineering.",
+    description: "Technical blog by Hemant Sonkar. Guides, tutorials, and insights on Python, Django, REST APIs, React, Next.js, and backend engineering.",
   },
 };
 

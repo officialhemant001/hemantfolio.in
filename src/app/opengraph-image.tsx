@@ -1,10 +1,10 @@
- 
+/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/og";
 import { DATA } from "@/data/resume";
 
 export const runtime = "edge";
 
-export const alt = `${DATA.name} — Full Stack Developer & AI Engineer`;
+export const alt = `${DATA.name} — Python & Django Developer | Portfolio`;
 export const size = {
     width: 1200,
     height: 630,

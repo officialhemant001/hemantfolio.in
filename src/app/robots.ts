@@ -8,16 +8,20 @@ import { DATA } from "@/data/resume";
  * It specifies crawl rules and links the generated sitemap.xml.
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = DATA.url; // "https://hemantsonkar.dev"
+  const baseUrl = DATA.url; // "https://hemantfolio.in.vercel.app"
 
   return {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/projects", "/blog", "/certificate", "/introduction", "/notes"],
-        disallow: [],
+        allow: "/",
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }

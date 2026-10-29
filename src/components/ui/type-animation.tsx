@@ -6,14 +6,14 @@ export function HeroTypeAnimation() {
   return (
     <TypeAnimation
       sequence={[
+        "Python Developer | Django Developer",
+        1500,
+        "Python & Django Developer",
+        1500,
         "Full Stack Web Developer",
-        1000,
-        "AI Engineer",
-        1000,
-        "Open Source Contributor",
-        1000,
-        "Problem Solver",
-        1000,
+        1500,
+        "RESTful API & Backend Engineer",
+        1500,
       ]}
       wrapper="span"
       speed={50}

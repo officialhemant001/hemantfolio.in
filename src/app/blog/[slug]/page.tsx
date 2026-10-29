@@ -1,6 +1,6 @@
 import { allPosts } from "content-collections";
 import { formatDate } from "@/lib/utils";
-import { DATA } from "@/data/resume";
+import { DATA, SOCIAL_LINKS } from "@/data/resume";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXContent } from "@content-collections/mdx/react";
@@ -50,13 +50,15 @@ export async function generateMetadata({
     authors: [{ name: DATA.name, url: DATA.url }],
     creator: DATA.name,
     keywords: [
-      "Full Stack Developer",
+      "Hemant Sonkar",
+      "Hemant Sonkar Python Django",
+      "Hemant Sonkar Developer",
+      "Python Developer",
+      "Django Developer",
       "Python",
       "Django",
       "React",
       "Next.js",
-      "Software Engineer",
-      "Hemant Sonkar",
       ...title.split(" ").filter(word => word.length > 3)
     ],
     openGraph: {
@@ -126,11 +128,10 @@ export default async function Blog({
       name: DATA.name,
       url: DATA.url,
       sameAs: [
-        "https://github.com/officialhemant001",
-        "https://www.linkedin.com/in/hemant-sonkar-developer",
-        "https://x.com/Hemantsonkar001",
-        "https://www.instagram.com/hemant_.112/",
-        "https://www.facebook.com/share/1DFNQSg8Dj/"
+        SOCIAL_LINKS.portfolio,
+        SOCIAL_LINKS.github,
+        SOCIAL_LINKS.instagram,
+        SOCIAL_LINKS.facebook,
       ]
     },
     publisher: {

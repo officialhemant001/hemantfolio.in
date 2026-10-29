@@ -6,7 +6,7 @@ import { DATA, SOCIAL_LINKS } from "@/data/resume";
 import { useState } from "react";
 import { toast } from "sonner";
 import {
-  Send, MapPin, Mail, Phone, Github, Linkedin, Instagram,
+  Send, MapPin, Mail, Phone, Github, Instagram,
   FileText, Award, FolderOpen, Globe, Facebook, CheckCircle
 } from "lucide-react";
 
@@ -82,18 +82,11 @@ export default function ContactSection() {
       value: "github.com/officialhemant001",
     },
     {
-      name: "LinkedIn",
-      icon: Linkedin,
-      href: SOCIAL_LINKS.linkedin,
-      isExternal: true,
-      value: "linkedin.com/in/hemantsonkar001",
-    },
-    {
       name: "Facebook",
       icon: Facebook,
       href: SOCIAL_LINKS.facebook,
       isExternal: true,
-      value: "facebook.com/hemantsonkar001",
+      value: "facebook.com/officialhemant112",
     },
     {
       name: "Instagram",

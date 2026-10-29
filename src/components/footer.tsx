@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronUp, Github, Linkedin, Facebook, Instagram, Mail, Phone, Globe, Twitter } from "lucide-react";
+import { ChevronUp, Github, Facebook, Instagram, Mail, Phone, Globe } from "lucide-react";
 import { DATA, SOCIAL_LINKS } from "@/data/resume";
 import { Icons } from "@/components/icons";
 
@@ -34,7 +34,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed max-w-[260px]">
-              Full Stack Web Developer & AI Engineer specializing in Python, Django, React, and intelligent automation systems.
+              Python & Django Developer specializing in scalable backend architectures, RESTful APIs, PostgreSQL databases, and modern full-stack web applications.
             </p>
             <p className="text-[11px] text-muted-foreground/80 font-medium">
               &copy; {currentYear} {DATA.name}. All rights reserved.
@@ -74,15 +74,6 @@ export function Footer() {
               <Github className="size-4" />
             </Link>
             <Link
-              href={SOCIAL_LINKS.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground p-1.5 rounded-lg hover:bg-muted/80 transition-all shrink-0"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="size-4" />
-            </Link>
-            <Link
               href={SOCIAL_LINKS.facebook}
               target="_blank"
               rel="noopener noreferrer"
@@ -99,15 +90,6 @@ export function Footer() {
               aria-label="Instagram"
             >
               <Instagram className="size-4" />
-            </Link>
-            <Link
-              href={SOCIAL_LINKS.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground p-1.5 rounded-lg hover:bg-muted/80 transition-all shrink-0"
-              aria-label="Twitter / X"
-            >
-              <Twitter className="size-4" />
             </Link>
             <Link
               href={`mailto:${SOCIAL_LINKS.email}`}

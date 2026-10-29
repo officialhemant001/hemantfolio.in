@@ -4,14 +4,15 @@ import { GitHubCalendar } from 'react-github-calendar';
 import { DATA } from "@/data/resume";
 import BlurFade from "@/components/magicui/blur-fade";
 import { Icons } from "@/components/icons";
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
+function useMounted() {
+  return useSyncExternalStore(emptySubscribe, () => true, () => false);
+}
 
 export default function GithubStatsSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const username = "officialhemant001"; // Pulled from DATA.contact.social.GitHub.url could also work, but hardcoding for react-github-calendar is safer
 

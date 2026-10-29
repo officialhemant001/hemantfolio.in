@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import Markdown from "react-markdown";
 import { ExternalLink, Github } from "lucide-react";
@@ -63,11 +64,13 @@ export function PremiumProjectCard({
             className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105"
           />
         ) : image && !imageError ? (
-          <img
+          <Image
             src={image}
-            alt={title}
+            alt={`${title} — Project Preview by Hemant Sonkar`}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             onError={() => setImageError(true)}
-            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105"
+            className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 w-full h-full bg-linear-to-br from-zinc-800 to-zinc-950 opacity-60 group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105" />

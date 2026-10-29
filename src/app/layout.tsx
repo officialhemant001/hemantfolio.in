@@ -41,10 +41,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Verification links to social profiles to establish digital identity and authority */}
+        {/* Verification links to verified public profiles to establish digital identity and authority */}
         <link rel="me" href={SOCIAL_LINKS.github} />
-        <link rel="me" href={SOCIAL_LINKS.linkedin} />
-        <link rel="me" href={SOCIAL_LINKS.twitter} />
         <link rel="me" href={SOCIAL_LINKS.instagram} />
         <link rel="me" href={SOCIAL_LINKS.facebook} />
       </head>

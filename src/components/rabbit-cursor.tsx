@@ -1,23 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useAnimation } from "framer-motion";
+
+function useWindowSize() {
+  const sizeStr = useSyncExternalStore(
+    (callback) => {
+      window.addEventListener("resize", callback);
+      return () => window.removeEventListener("resize", callback);
+    },
+    () => `${window.innerWidth}x${window.innerHeight}`,
+    () => "0x0"
+  );
+  const [width, height] = sizeStr.split("x").map(Number);
+  return { width, height };
+}
 
 export default function RabbitCursor() {
   const controls = useAnimation();
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const windowSize = useWindowSize();
   const [rabbitState, setRabbitState] = useState<"hopping" | "sitting" | "scratching">("hopping");
-
-  useEffect(() => {
-    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     if (windowSize.width === 0) return;

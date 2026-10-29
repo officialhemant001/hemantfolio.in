@@ -43,130 +43,94 @@ import { DATA, SOCIAL_LINKS } from "@/data/resume";
 // ── Constants ────────────────────────────────────────────────────────────────
 
 /** Canonical site URL — used as the base for all metadata URL resolutions. */
-const SITE_URL = DATA.url; // "https://hemantsonkar.dev"
+const SITE_URL = DATA.url; // "https://hemantfolio.in.vercel.app"
 
 /**
  * Primary title — optimized for both SERP click-through and recruiter search.
  *
  * Format: "Name — Primary Role | Secondary Role"
  * - Keeps name first for branded searches
- * - Pipe-separated roles maximize keyword matching
- * - Under 60 characters to avoid SERP truncation
+ * - Targets: "Hemant Sonkar", "Hemant Sonkar Python Django", "Hemant Sonkar Developer"
  */
-const TITLE = "Hemant Sonkar — Full Stack & AI Developer";
+const TITLE = "Hemant Sonkar — Python & Django Developer | Portfolio";
 
 /**
- * Meta description — optimized for SERP display (under 155 chars ideal).
- *
- * Strategy:
- * - Leads with role + specialization (matches recruiter queries)
- * - Includes top 5 tech stack keywords naturally
- * - Ends with a call-to-action (open for opportunities)
- * - Avoids keyword stuffing; reads like a human-written sentence
- *
- * ⚠️ Google may rewrite this in SERPs, but a well-crafted description
- *    still influences click-through rate and social share previews.
+ * Meta description — optimized for SERP display (under 160 chars).
  */
 const DESCRIPTION =
-  "Hemant Sonkar — Full Stack & AI Developer specializing in Python, Django, React, Next.js, JavaScript, and TypeScript. Building scalable web applications, RESTful APIs, AI-powered systems, and modern software solutions with clean architecture, high performance, and exceptional user experiences.";
+  "Hemant Sonkar is a Python and Django developer specializing in scalable backend architectures, Django REST Framework, PostgreSQL databases, and full-stack web development with React.";
 
 /**
  * SEO keywords — strategically organized by search intent.
- *
- * 2026 Note: Google officially ignores the keywords meta tag for ranking,
- * but other engines (Bing, Yandex, DuckDuckGo) still use them as signals.
- * They also help with internal site search and content classification.
- *
- * Categories:
- *   • Branded — name variations recruiters might search
- *   • Role — job title variations for LinkedIn/job board cross-referencing
- *   • Technology — specific stack keywords for technical recruiters
- *   • AI/ML — emerging skills that differentiate from generic developers
- *   • Service — client-intent searches (hire, freelance)
- *   • Location — geographic targeting for local opportunities
  */
 const KEYWORDS: string[] = [
-  // ── Branded & Identity ──
-  // Recruiters often search by name + role after seeing LinkedIn profiles
+  // ── Branded & Identity (Exact Target Queries) ──
   "Hemant Sonkar",
-  "Hemant Sonkar developer",
-  "Hemant Sonkar portfolio",
-  "hemantsonkar.dev",
+  "Hemant Sonkar Python Django",
+  "Hemant Sonkar Developer",
+  "Hemant Sonkar Python Developer",
+  "Hemant Sonkar Django Developer",
+  "Hemant Sonkar Portfolio",
+  "Hemant Sonkar Lucknow",
+  "hemantfolio.in.vercel.app",
 
-  // ── Role Keywords (Recruiter Searches) ──
-  // Maps to LinkedIn job title fields and ATS keyword matching
+  // ── Role Keywords (Recruiter & Client Searches) ──
+  "Python Developer",
+  "Django Developer",
+  "Python Django Developer",
   "Full Stack Developer",
-  "AI Engineer",
+  "Backend Developer",
+  "Python Backend Developer",
+  "Django REST Framework Developer",
   "Software Developer",
   "Software Engineer",
   "Web Developer",
-  "Python Developer",
-  "Django Developer",
   "React Developer",
-  "Next.js Developer",
-  "Frontend Developer",
-  "Backend Developer",
-  "Full Stack Engineer",
 
   // ── Core Technologies ──
-  // Matches technical recruiter boolean searches: "Python AND Django AND React"
   "Python",
   "Django",
   "Django REST Framework",
-  "JavaScript",
-  "TypeScript",
+  "PostgreSQL",
+  "REST APIs",
   "React",
   "React.js",
-  "Next.js",
-  "Node.js",
-  "HTML5",
-  "CSS3",
-  "Tailwind CSS",
-  "Bootstrap",
-
-  // ── Databases & Infrastructure ──
-  "PostgreSQL",
-  "MongoDB",
-  "Redis",
+  "JavaScript",
+  "TypeScript",
   "Docker",
   "Git",
   "GitHub",
-  "REST API",
-  "GraphQL",
-  "CI/CD",
+  "HTML5",
+  "CSS3",
+  "Bootstrap",
+  "MongoDB",
+  "Redis",
+  "Celery",
 
-  // ── AI & Machine Learning ──
-  // High-demand keywords in 2026; differentiators from standard devs
-  "AI Development",
-  "Machine Learning",
+  // ── AI & Emerging Integrations ──
+  "AI Integration",
+  "FastAPI",
   "LangChain",
-  "RAG Systems",
-  "AI Agents",
-  "LLM",
-  "Large Language Models",
-  "CrewAI",
-  "OpenAI API",
+  "ChromaDB",
 
   // ── Services & Client Intent ──
-  "Developer Portfolio",
-  "Software Engineer Portfolio",
-  "Freelance Developer",
-  "Hire Full Stack Developer",
   "Hire Python Developer",
+  "Hire Django Developer",
+  "Hire Full Stack Developer",
+  "Python Freelance Developer",
   "Web Application Development",
 
   // ── Location (Local SEO) ──
   "Lucknow",
   "India",
-  "Developer in Lucknow",
+  "Python Developer in Lucknow",
+  "Django Developer in Lucknow",
   "Developer in India",
 
-  // ── Dynamic Skills & Categories from DATA ──
+  // ── Dynamic Skills from DATA ──
   ...DATA.skills.map((s) => s.name),
   ...DATA.skillCategories.flatMap((c) => c.items),
   ...DATA.skills.map((s) => `${s.name} Developer`),
-  ...DATA.skills.map((s) => `${s.name} Engineer`),
-  ...DATA.skills.map((s) => `${s.name} Architect`),
 ].filter((value, index, self) => self.indexOf(value) === index);
 
 // ============================================================================
@@ -242,7 +206,6 @@ export const siteMetadata: Metadata = {
 
   // ── Open Graph (LinkedIn, Facebook, WhatsApp, Discord, Slack) ───────────
   // Controls how the site appears when shared on social platforms.
-  // Set type to "profile" and declare profile details for rich snippets.
   openGraph: {
     type: "profile",
     firstName: "Hemant",
@@ -251,7 +214,7 @@ export const siteMetadata: Metadata = {
     gender: "male",
     locale: "en_US",
     url: SITE_URL,
-    siteName: `${DATA.name} — Portfolio`,
+    siteName: `${DATA.name} — Python & Django Developer Portfolio`,
     title: TITLE,
     description: DESCRIPTION,
     emails: [SOCIAL_LINKS.email],
@@ -261,27 +224,25 @@ export const siteMetadata: Metadata = {
         url: "/opengraph-image",  // Resolved by Next.js opengraph-image.tsx
         width: 1200,
         height: 630,
-        alt: `${DATA.name} — Full Stack AI Developer | Portfolio`,
+        alt: `${DATA.name} — Python & Django Developer Portfolio`,
         type: "image/png",
       },
     ],
   },
 
   // ── Twitter / X Card ─────────────────────────────────────────────────────
-  // Controls how the site appears when shared on X (formerly Twitter).
-  // `summary_large_image` shows a large preview card — best for portfolios.
+  // Controls how the site appears when shared on X.
+  // Note: Creator handle omitted until verified account is provided.
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    creator: "@Hemantsonkar001",
-    site: "@Hemantsonkar001",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: `${DATA.name} — Full Stack Developer & AI Engineer | Portfolio`,
+        alt: `${DATA.name} — Python & Django Developer Portfolio`,
       },
     ],
   },
@@ -427,15 +388,20 @@ export const jsonLd = {
       name: DATA.name,
       givenName: "Hemant",
       familyName: "Sonkar",
+      alternateName: [
+        "Hemant Sonkar Python Django",
+        "Hemant Sonkar Developer",
+        "Hemant Sonkar Python Developer",
+      ],
       url: SITE_URL,
       image: {
         "@type": "ImageObject",
         url: `${SITE_URL}/me.jpeg`,
         width: 400,
         height: 400,
-        caption: `${DATA.name} — Full Stack Developer & AI Engineer`,
+        caption: `${DATA.name} — Python & Django Developer`,
       },
-      jobTitle: "Full Stack & AI Developer",
+      jobTitle: "Python and Django Developer",
       description: DESCRIPTION,
       email: DATA.contact.email,
       telephone: DATA.contact.tel,
@@ -460,28 +426,25 @@ export const jsonLd = {
       },
 
       // ── Social Profiles (sameAs) ──
-      // Explicit, curated list of all official social profiles.
-      // These tell Google, Bing, and other engines which social accounts
-      // belong to this person — critical for Knowledge Panel eligibility
-      // and E-E-A-T identity consolidation.
+      // Verified public profiles belonging directly to Hemant Sonkar.
       sameAs: [
         SOCIAL_LINKS.portfolio,
         SOCIAL_LINKS.github,
-        SOCIAL_LINKS.linkedin,
-        SOCIAL_LINKS.facebook,
-        SOCIAL_LINKS.twitter,
         SOCIAL_LINKS.instagram,
+        SOCIAL_LINKS.facebook,
       ],
 
       // ── Skills / Expertise (Dynamic) ──
       knowsAbout: [
+        "Python",
+        "Django",
+        "Django REST Framework",
+        "PostgreSQL",
+        "RESTful APIs",
+        "Backend Architecture",
         "Full Stack Development",
-        "Software Engineering",
-        "AI Engineering",
-        "Machine Learning",
-        "Deep Learning",
-        "Natural Language Processing",
-        "RAG Architecture",
+        "Database Design",
+        "React.js",
         ...DATA.skills.map((s) => s.name),
         ...DATA.skillCategories.flatMap((c) => c.items),
       ].filter((value, index, self) => self.indexOf(value) === index),
@@ -519,14 +482,14 @@ export const jsonLd = {
       // ── Current Occupation (structured for recruiter tools) ──
       hasOccupation: {
         "@type": "Occupation",
-        name: "Full Stack Developer",
+        name: "Python & Django Developer",
         occupationLocation: {
           "@type": "City",
           name: "Lucknow",
         },
-        skills: DATA.skills.map((s) => s.name).join(", "),
+        skills: "Python, Django, Django REST Framework, PostgreSQL, REST APIs, React.js",
         responsibilities:
-          "Building production-grade web applications, REST APIs, AI-powered solutions, frontend-backend integration, and database architecture.",
+          "Developing scalable backend architectures, RESTful APIs, PostgreSQL database solutions, and full-stack web applications.",
         estimatedSalary: {
           "@type": "MonetaryAmountDistribution",
           name: "Full Stack Developer Salary in India",
@@ -553,7 +516,8 @@ export const jsonLd = {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: `${DATA.name} — Portfolio`,
+      name: `${DATA.name} — Python & Django Developer Portfolio`,
+      alternateName: "Hemant Sonkar Portfolio",
       description: DESCRIPTION,
       publisher: {
         "@id": `${SITE_URL}/#person`,
@@ -579,7 +543,7 @@ export const jsonLd = {
       "@type": "ProfilePage",
       "@id": `${SITE_URL}/#profilepage`,
       url: SITE_URL,
-      name: `${DATA.name} — Portfolio`,
+      name: `${DATA.name} — Python & Django Developer Profile`,
       description: DESCRIPTION,
       mainEntity: {
         "@id": `${SITE_URL}/#person`,
@@ -719,7 +683,7 @@ export const jsonLd = {
           name: "Who is Hemant Sonkar?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Hemant Sonkar is a Full Stack Developer and AI Engineer based in Lucknow, India. He is pursuing his B.Tech in Computer Science at KMCLU and works as a Full Stack Developer Intern at Techpile. He specializes in Python, Django, React.js, and AI-powered solutions including RAG systems and multi-agent architectures.",
+            text: "Hemant Sonkar is a Python and Django Developer based in Lucknow, India. He is pursuing his B.Tech in Computer Science at Khwaja Moinuddin Chishti Language University and works as a Full Stack Developer Intern at Techpile. He specializes in Python, Django REST Framework, PostgreSQL, and full-stack web applications.",
           },
         },
         {
@@ -727,7 +691,7 @@ export const jsonLd = {
           name: "What technologies does Hemant Sonkar specialize in?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Hemant specializes in Python, Django, Django REST Framework, React.js, TypeScript, Next.js, PostgreSQL, MongoDB, Redis, Docker, LangChain, CrewAI, and OpenAI API. He has expertise in both full-stack web development and AI/ML engineering.",
+            text: "Hemant specializes in Python, Django, Django REST Framework, PostgreSQL, RESTful APIs, React.js, Docker, Git, and database optimization.",
           },
         },
         {
@@ -735,7 +699,7 @@ export const jsonLd = {
           name: "What are Hemant Sonkar's notable projects?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "His flagship projects include AI-ROS (AI Autonomous Research OS) — a production-grade SaaS platform with multi-agent AI, RAG-based document intelligence, and real-time collaboration; and AgroIntel AI — an AI-based crop disease detection system using deep learning (CNN & ResNet) with a Django REST API backend.",
+            text: "His projects include AI-ROS (AI Autonomous Research OS) with Django REST and multi-agent systems, AgroIntel AI with Django REST API, Lead Generation Platform with Django and Celery, and Next Generation Weather Platform.",
           },
         },
         {
@@ -743,7 +707,7 @@ export const jsonLd = {
           name: "Is Hemant Sonkar available for hire?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, Hemant Sonkar is open to both freelance and full-time opportunities. He is available for full-stack development, AI engineering, and software development roles. Contact him via email at oficialhemant112@gmail.com or through his LinkedIn profile.",
+            text: "Yes, Hemant Sonkar is open to freelance and full-time opportunities as a Python and Django Developer. Contact him via email at officialhemant112@gmail.com or through his GitHub profile at https://github.com/officialhemant001.",
           },
         },
         {
@@ -751,7 +715,7 @@ export const jsonLd = {
           name: "Where is Hemant Sonkar located?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Hemant Sonkar is based in Lucknow, Uttar Pradesh, India. He is open to remote work opportunities as well as on-site positions.",
+            text: "Hemant Sonkar is based in Lucknow, Uttar Pradesh, India. He is open to remote opportunities as well as on-site positions.",
           },
         },
       ],

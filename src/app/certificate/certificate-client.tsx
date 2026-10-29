@@ -14,21 +14,24 @@ export default function CertificateClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const certId = searchParams.get("id");
+  const matchedIdx = certId ? DATA.certifications.findIndex((c) => c.id === certId) : -1;
 
   // State
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(matchedIdx !== -1 ? matchedIdx : 0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(matchedIdx !== -1);
   const [zoom, setZoom] = useState(100);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const viewerRef = useRef<HTMLDivElement>(null);
 
-  // Sync index with search parameter
+  // Sync index when search parameter changes after initial render
   useEffect(() => {
     if (certId) {
       const idx = DATA.certifications.findIndex((c) => c.id === certId);
       if (idx !== -1) {
-        setActiveIdx(idx);
-        setIsLightboxOpen(true);
+        queueMicrotask(() => {
+          setActiveIdx(idx);
+          setIsLightboxOpen(true);
+        });
       }
     }
   }, [certId]);
